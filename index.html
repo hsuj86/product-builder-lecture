@@ -17,7 +17,6 @@
         <p class="subtitle">비 오는 날, 따뜻하고 든든한 저녁 메뉴를 골라드려요.</p>
         <button id="generate-btn">오늘 저녁 추천</button>
         <div id="menu-result" class="menu-result" aria-live="polite"></div>
-        <div id="menu-options" class="menu-options"></div>
         <form class="partner-form" action="https://formspree.io/f/xkozoqkr" method="POST">
             <h2>제휴 문의</h2>
             <label>
@@ -34,6 +33,24 @@
             </label>
             <button type="submit" class="submit-btn">문의 보내기</button>
         </form>
+        <div class="comments">
+            <div id="disqus_thread"></div>
+            <script>
+                /*
+                var disqus_config = function () {
+                    this.page.url = PAGE_URL;
+                    this.page.identifier = PAGE_IDENTIFIER;
+                };
+                */
+                (function() {
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://productbuilder-8zpwdnqi7g.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>

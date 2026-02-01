@@ -141,42 +141,9 @@ h1 {
     min-height: 36px;
 }
 
-.menu-options {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
-}
-
-.menu-card {
-    padding: 12px 14px;
-    border-radius: 14px;
-    background: var(--chip);
-    border: 1px solid var(--panel-border);
+.comments {
+    margin-top: 32px;
     text-align: left;
-}
-
-.menu-card .name {
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-
-.menu-card .tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-
-.tag {
-    font-size: 0.75rem;
-    padding: 4px 8px;
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.1);
-    color: inherit;
-}
-
-[data-theme="dark"] .tag {
-    background: rgba(255, 255, 255, 0.12);
 }
 
 .partner-form {

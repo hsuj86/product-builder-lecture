@@ -21,7 +21,6 @@ themeToggle.addEventListener('click', () => {
 
 const generateBtn = document.getElementById('generate-btn');
 const menuResult = document.getElementById('menu-result');
-const menuOptions = document.getElementById('menu-options');
 
 const menuData = [
   { name: '김치찌개', tags: ['따뜻함', '국물', '매콤'] },
@@ -38,29 +37,12 @@ const menuData = [
   { name: '전 + 막걸리', tags: ['비오는날', '전통', '고소'] },
 ];
 
-function pickMenus(count) {
-  const shuffled = [...menuData].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count);
-}
-
-function renderOptions(options) {
-  menuOptions.innerHTML = '';
-  options.forEach((option) => {
-    const card = document.createElement('div');
-    card.className = 'menu-card';
-    card.innerHTML = `
-      <div class="name">${option.name}</div>
-      <div class="tags">
-        ${option.tags.map((tag) => `<span class="tag">${tag}</span>`).join('')}
-      </div>
-    `;
-    menuOptions.appendChild(card);
-  });
+function pickMenu() {
+  const index = Math.floor(Math.random() * menuData.length);
+  return menuData[index];
 }
 
 generateBtn.addEventListener('click', () => {
-  const choices = pickMenus(4);
-  const topPick = choices[0];
-  menuResult.textContent = `오늘의 추천: ${topPick.name}`;
-  renderOptions(choices);
+  const choice = pickMenu();
+  menuResult.textContent = `오늘의 추천: ${choice.name}`;
 });
