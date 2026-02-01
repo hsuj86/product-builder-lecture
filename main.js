@@ -1,61 +1,3 @@
-class LottoBall extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-  }
-
-  connectedCallback() {
-    const number = this.getAttribute('number');
-    let color;
-
-    if (number <= 10) {
-      color = '#fbc400'; // Yellow
-    } else if (number <= 20) {
-      color = '#69c8f2'; // Blue
-    } else if (number <= 30) {
-      color = '#ff7272'; // Red
-    } else if (number <= 40) {
-      color = '#aaa'; // Gray
-    } else {
-      color = '#b0d840'; // Green
-    }
-
-    this.shadowRoot.innerHTML = `
-      <style>
-        .ball {
-          width: 70px;
-          height: 70px;
-          border-radius: 50%;
-          background-color: ${color};
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 2rem;
-          font-weight: 600;
-          color: #fff;
-          text-shadow: 0 0 5px rgba(0,0,0,0.4);
-          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), inset 0 -5px 10px rgba(0,0,0,0.4);
-          animation: appear 0.5s ease-out forwards;
-        }
-
-        @keyframes appear {
-            from {
-                transform: scale(0);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-      </style>
-      <div class="ball">${number}</div>
-    `;
-  }
-}
-
-customElements.define('lotto-ball', LottoBall);
-
 const themeToggle = document.getElementById('theme-toggle');
 const storedTheme = localStorage.getItem('theme');
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -78,23 +20,47 @@ themeToggle.addEventListener('click', () => {
 });
 
 const generateBtn = document.getElementById('generate-btn');
-const lottoNumbersContainer = document.getElementById('lotto-numbers-container');
+const menuResult = document.getElementById('menu-result');
+const menuOptions = document.getElementById('menu-options');
+
+const menuData = [
+  { name: '김치찌개', tags: ['따뜻함', '국물', '매콤'] },
+  { name: '부대찌개', tags: ['든든함', '국물', '치즈'] },
+  { name: '순두부찌개', tags: ['부드러움', '국물', '매콤'] },
+  { name: '국밥', tags: ['보양', '국물', '푸짐'] },
+  { name: '칼국수', tags: ['쫄깃', '국물', '담백'] },
+  { name: '잔치국수', tags: ['가볍게', '국물', '따뜻함'] },
+  { name: '라멘', tags: ['진한맛', '국물', '짭짤'] },
+  { name: '카레', tags: ['향신', '따뜻함', '든든함'] },
+  { name: '오징어볶음', tags: ['매콤', '밥도둑', '해산물'] },
+  { name: '치킨너겟 + 샐러드', tags: ['간편', '바삭', '균형'] },
+  { name: '우동', tags: ['국물', '부드러움', '간편'] },
+  { name: '전 + 막걸리', tags: ['비오는날', '전통', '고소'] },
+];
+
+function pickMenus(count) {
+  const shuffled = [...menuData].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+}
+
+function renderOptions(options) {
+  menuOptions.innerHTML = '';
+  options.forEach((option) => {
+    const card = document.createElement('div');
+    card.className = 'menu-card';
+    card.innerHTML = `
+      <div class="name">${option.name}</div>
+      <div class="tags">
+        ${option.tags.map((tag) => `<span class="tag">${tag}</span>`).join('')}
+      </div>
+    `;
+    menuOptions.appendChild(card);
+  });
+}
 
 generateBtn.addEventListener('click', () => {
-  lottoNumbersContainer.innerHTML = '';
-  const numbers = new Set();
-  while (numbers.size < 6) {
-    const randomNumber = Math.floor(Math.random() * 45) + 1;
-    numbers.add(randomNumber);
-  }
-  
-  const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
-
-  sortedNumbers.forEach((number, index) => {
-    setTimeout(() => {
-        const lottoBall = document.createElement('lotto-ball');
-        lottoBall.setAttribute('number', number);
-        lottoNumbersContainer.appendChild(lottoBall);
-    }, index * 200); // Stagger the appearance
-  });
+  const choices = pickMenus(4);
+  const topPick = choices[0];
+  menuResult.textContent = `오늘의 추천: ${topPick.name}`;
+  renderOptions(choices);
 });
