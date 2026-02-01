@@ -56,6 +56,27 @@ class LottoBall extends HTMLElement {
 
 customElements.define('lotto-ball', LottoBall);
 
+const themeToggle = document.getElementById('theme-toggle');
+const storedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const isDark = theme === 'dark';
+  themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+  themeToggle.innerHTML = isDark ? '<span aria-hidden="true">☀️</span>' : '<span aria-hidden="true">🌙</span>';
+}
+
+const initialTheme = storedTheme ? storedTheme : (prefersDark ? 'dark' : 'light');
+applyTheme(initialTheme);
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', nextTheme);
+  applyTheme(nextTheme);
+});
+
 const generateBtn = document.getElementById('generate-btn');
 const lottoNumbersContainer = document.getElementById('lotto-numbers-container');
 
