@@ -18,6 +18,22 @@
         <button id="generate-btn">오늘 저녁 추천</button>
         <div id="menu-result" class="menu-result" aria-live="polite"></div>
         <div id="menu-options" class="menu-options"></div>
+        <form class="partner-form" action="https://formspree.io/f/xkozoqkr" method="POST">
+            <h2>제휴 문의</h2>
+            <label>
+                담당자명
+                <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label>
+                이메일
+                <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label>
+                문의 내용
+                <textarea name="message" rows="4" required></textarea>
+            </label>
+            <button type="submit" class="submit-btn">문의 보내기</button>
+        </form>
     </div>
     <script src="main.js"></script>
 </body>
