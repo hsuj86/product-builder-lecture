@@ -19,30 +19,59 @@ themeToggle.addEventListener('click', () => {
   applyTheme(nextTheme);
 });
 
-const generateBtn = document.getElementById('generate-btn');
-const menuResult = document.getElementById('menu-result');
+const analyzeBtn = document.getElementById('analyze-btn');
+const imageInput = document.getElementById('image-input');
+const previewImage = document.getElementById('preview-image');
+const result = document.getElementById('result');
+const labelContainer = document.getElementById('label-container');
 
-const menuData = [
-  { name: '김치찌개', tags: ['따뜻함', '국물', '매콤'] },
-  { name: '부대찌개', tags: ['든든함', '국물', '치즈'] },
-  { name: '순두부찌개', tags: ['부드러움', '국물', '매콤'] },
-  { name: '국밥', tags: ['보양', '국물', '푸짐'] },
-  { name: '칼국수', tags: ['쫄깃', '국물', '담백'] },
-  { name: '잔치국수', tags: ['가볍게', '국물', '따뜻함'] },
-  { name: '라멘', tags: ['진한맛', '국물', '짭짤'] },
-  { name: '카레', tags: ['향신', '따뜻함', '든든함'] },
-  { name: '오징어볶음', tags: ['매콤', '밥도둑', '해산물'] },
-  { name: '치킨너겟 + 샐러드', tags: ['간편', '바삭', '균형'] },
-  { name: '우동', tags: ['국물', '부드러움', '간편'] },
-  { name: '전 + 막걸리', tags: ['비오는날', '전통', '고소'] },
-];
+const MODEL_URL = 'https://teachablemachine.withgoogle.com/models/R_wnQyyLS/';
+let model;
 
-function pickMenu() {
-  const index = Math.floor(Math.random() * menuData.length);
-  return menuData[index];
+async function loadModel() {
+  if (model) return model;
+  const modelURL = `${MODEL_URL}model.json`;
+  const metadataURL = `${MODEL_URL}metadata.json`;
+  model = await tmImage.load(modelURL, metadataURL);
+  return model;
 }
 
-generateBtn.addEventListener('click', () => {
-  const choice = pickMenu();
-  menuResult.textContent = `오늘의 추천: ${choice.name}`;
+function clearLabels() {
+  labelContainer.innerHTML = '';
+}
+
+function renderPredictions(predictions) {
+  clearLabels();
+  predictions.forEach((item) => {
+    const row = document.createElement('div');
+    row.className = 'label-item';
+    row.innerHTML = `<span>${item.className}</span><span>${(item.probability * 100).toFixed(1)}%</span>`;
+    labelContainer.appendChild(row);
+  });
+}
+
+async function analyzeImage(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async () => {
+    previewImage.src = reader.result;
+    previewImage.style.display = 'block';
+    result.textContent = '분석 중...';
+    const loadedModel = await loadModel();
+    const predictions = await loadedModel.predict(previewImage);
+    const sorted = predictions.sort((a, b) => b.probability - a.probability);
+    const top = sorted[0];
+    result.textContent = `결과: ${top.className}`;
+    renderPredictions(sorted);
+  };
+  reader.readAsDataURL(file);
+}
+
+analyzeBtn.addEventListener('click', () => {
+  const file = imageInput.files[0];
+  if (!file) {
+    result.textContent = '먼저 사진을 업로드해주세요.';
+    return;
+  }
+  analyzeImage(file);
 });

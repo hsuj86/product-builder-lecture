@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rainy Night Dinner Picker</title>
+    <title>Animal Face Test</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Rainy Night Dinner Picker</h1>
+            <h1>Animal Face Test</h1>
             <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
                 <span aria-hidden="true">🌙</span>
             </button>
         </div>
-        <p class="subtitle">비 오는 날, 따뜻하고 든든한 저녁 메뉴를 골라드려요.</p>
-        <button id="generate-btn">오늘 저녁 추천</button>
-        <div id="menu-result" class="menu-result" aria-live="polite"></div>
+        <p class="subtitle">강아지 vs 고양이, 사진으로 동물상 테스트를 해보세요.</p>
+        <div class="upload-card">
+            <label class="upload-label" for="image-input">사진 업로드</label>
+            <input id="image-input" type="file" accept="image/*">
+            <button id="analyze-btn" type="button">분석하기</button>
+        </div>
+        <div class="preview-card">
+            <img id="preview-image" alt="업로드한 사진 미리보기">
+            <div id="result" class="result" aria-live="polite"></div>
+            <div id="label-container" class="label-container"></div>
+        </div>
         <form class="partner-form" action="https://formspree.io/f/xkozoqkr" method="POST">
             <h2>제휴 문의</h2>
             <label>
@@ -52,6 +60,8 @@
             <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
