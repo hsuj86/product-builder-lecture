@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-1304112425581501">
+    <meta name="description" content="사진 한 장으로 강아지/고양이 동물상을 예측하는 체험형 테스트입니다. 업로드한 사진은 브라우저에서만 처리되며, 사용 방법과 한계, 개인정보 안내를 투명하게 제공합니다.">
     <title>Animal Face Test</title>
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1304112425581501"
@@ -18,6 +19,13 @@
             </button>
         </div>
         <p class="subtitle">강아지 vs 고양이, 사진으로 동물상 테스트를 해보세요.</p>
+        <nav class="quick-nav" aria-label="빠른 이동">
+            <a href="#how">사용 방법</a>
+            <a href="#model">모델 안내</a>
+            <a href="#privacy">개인정보</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">문의</a>
+        </nav>
         <div class="upload-card">
             <label class="upload-label" for="image-input">사진 업로드</label>
             <input id="image-input" type="file" accept="image/*">
@@ -28,8 +36,66 @@
             <div id="result" class="result" aria-live="polite"></div>
             <div id="label-container" class="label-container"></div>
         </div>
+        <section id="how" class="content-section">
+            <h2 class="section-title">사용 방법</h2>
+            <ol class="info-list">
+                <li>밝고 정면에 가까운 얼굴 사진을 업로드하세요.</li>
+                <li>분석하기를 누르면 브라우저에서 즉시 결과가 계산됩니다.</li>
+                <li>결과는 재미를 위한 참고용이며, 외모나 성격을 단정하지 않습니다.</li>
+            </ol>
+            <p class="section-text">이 페이지는 사진 분석 결과를 즉시 보여주는 체험형 서비스입니다. 사용자가 원하는 정보를 빠르게 찾을 수 있도록 핵심 기능과 안내를 한 화면에 구성했습니다.</p>
+        </section>
+        <section id="model" class="content-section">
+            <h2 class="section-title">모델 안내 및 한계</h2>
+            <div class="section-grid">
+                <div class="section-card">
+                    <h3>어떤 모델인가요?</h3>
+                    <p>Teachable Machine 기반 이미지 분류 모델로, 학습된 패턴을 참고해 강아지/고양이 동물상 확률을 표시합니다.</p>
+                </div>
+                <div class="section-card">
+                    <h3>정확도에 영향을 주는 요소</h3>
+                    <p>조명, 각도, 해상도, 얼굴 가림(마스크/선글라스) 등에 따라 결과가 달라질 수 있습니다.</p>
+                </div>
+                <div class="section-card">
+                    <h3>책임 있는 사용</h3>
+                    <p>결과는 오락 목적의 참고 정보이며, 평가·차별·개인 판단에 사용하지 않도록 안내합니다.</p>
+                </div>
+            </div>
+            <p class="notice">이 서비스는 사용자의 체험을 돕기 위해 결과와 한계를 투명하게 공개합니다.</p>
+        </section>
+        <section id="privacy" class="content-section">
+            <h2 class="section-title">개인정보 및 데이터 처리</h2>
+            <ul class="info-list">
+                <li>업로드한 사진은 브라우저 메모리에서만 처리되며 서버로 전송되지 않습니다.</li>
+                <li>분석 결과와 이미지는 저장하지 않습니다.</li>
+                <li>제휴 문의 폼은 사용자가 입력한 내용만 이메일로 전달됩니다.</li>
+            </ul>
+            <p class="section-text">사용자가 제공한 정보가 어떤 방식으로 처리되는지 명확히 설명해 신뢰할 수 있는 환경을 제공합니다.</p>
+        </section>
+        <section id="faq" class="content-section">
+            <h2 class="section-title">자주 묻는 질문</h2>
+            <div class="faq">
+                <details>
+                    <summary>모바일에서도 사용할 수 있나요?</summary>
+                    <p>네. 모바일에서도 업로드와 분석이 동작하도록 구성되어 있습니다.</p>
+                </details>
+                <details>
+                    <summary>사진이 저장되나요?</summary>
+                    <p>아니요. 사진은 브라우저에서만 처리되며 저장되지 않습니다.</p>
+                </details>
+                <details>
+                    <summary>결과가 마음에 들지 않으면 어떻게 하나요?</summary>
+                    <p>다른 사진으로 다시 시도해 보세요. 조명과 각도에 따라 결과가 달라질 수 있습니다.</p>
+                </details>
+            </div>
+        </section>
+        <section class="content-section" aria-label="광고">
+            <h2 class="section-title">스폰서</h2>
+            <p class="section-text">광고는 콘텐츠 품질을 유지하기 위해 제한적으로 표시됩니다.</p>
+            <div class="ad-slot" aria-hidden="true">광고 유닛 설정 필요</div>
+        </section>
         <form class="partner-form" action="https://formspree.io/f/xkozoqkr" method="POST">
-            <h2>제휴 문의</h2>
+            <h2 id="contact">제휴 문의</h2>
             <label>
                 담당자명
                 <input type="text" name="name" autocomplete="name" required>
@@ -44,24 +110,10 @@
             </label>
             <button type="submit" class="submit-btn">문의 보내기</button>
         </form>
-        <div class="comments">
-            <div id="disqus_thread"></div>
-            <script>
-                /*
-                var disqus_config = function () {
-                    this.page.url = PAGE_URL;
-                    this.page.identifier = PAGE_IDENTIFIER;
-                };
-                */
-                (function() {
-                    var d = document, s = d.createElement('script');
-                    s.src = 'https://productbuilder-8zpwdnqi7g.disqus.com/embed.js';
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-        </div>
+        <footer class="site-footer">
+            <p>본 사이트는 사용자 경험과 정보 전달을 중심으로 설계되었습니다. 광고는 콘텐츠를 보완하는 범위에서만 표시합니다.</p>
+            <p>© 2026 Animal Face Test</p>
+        </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
