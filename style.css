@@ -275,6 +275,40 @@ h1 {
     margin-bottom: 1rem;
 }
 
+.text-link {
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: inherit;
+    opacity: 0.8;
+}
+
+.text-link:hover {
+    opacity: 1;
+}
+
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.site-nav a {
+    text-decoration: none;
+    font-size: 0.92rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--panel-border);
+    background: var(--panel);
+    color: inherit;
+}
+
+.site-nav a[aria-current="page"] {
+    background: var(--chip);
+    font-weight: 600;
+}
+
 .theme-toggle {
     border: 1px solid var(--toggle-border);
     background: var(--toggle-bg);
@@ -356,6 +390,22 @@ h1 {
     opacity: 0.8;
 }
 
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.85;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
 .site-footer p {
     margin: 0 0 8px;
 }
@@ -379,6 +429,10 @@ h1 {
     }
     .upload-card {
         grid-template-columns: 1fr;
+    }
+
+    .site-nav {
+        justify-content: flex-start;
     }
 
     .quick-nav {
