@@ -49,7 +49,48 @@
       "name": "Animal Face Test",
       "url": "https://hsuj86.github.io/product-builder-lecture/",
       "description": "사진 한 장으로 강아지/고양이 동물상을 예측하는 체험형 테스트입니다. 업로드한 사진은 브라우저에서만 처리되며, 사용 방법과 한계, 개인정보 안내를 투명하게 제공합니다.",
-      "inLanguage": "ko"
+      "inLanguage": "ko",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Animal Face Test",
+        "url": "https://hsuj86.github.io/product-builder-lecture/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hsuj86.github.io/product-builder-lecture/apple-touch-icon.png"
+        }
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "모바일에서도 사용할 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네. 모바일에서도 업로드와 분석이 동작하도록 구성되어 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "사진이 저장되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "아니요. 사진은 브라우저에서만 처리되며 저장되지 않습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "결과가 마음에 들지 않으면 어떻게 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "다른 사진으로 다시 시도해 보세요. 조명과 각도에 따라 결과가 달라질 수 있습니다."
+          }
+        }
+      ]
     }
     </script>
     <link rel="stylesheet" href="style.css">
@@ -79,6 +120,15 @@
             <a href="#faq">FAQ</a>
             <a href="#contact">문의</a>
         </nav>
+        <section id="summary" class="content-section">
+            <h2 class="section-title">한눈에 보는 요약</h2>
+            <ul class="info-list">
+                <li>사진 한 장으로 강아지/고양이 동물상 경향을 즉시 예측합니다.</li>
+                <li>분석은 브라우저에서만 처리되고 서버로 전송되지 않습니다.</li>
+                <li>결과는 재미를 위한 참고용이며 판단·평가 목적이 아닙니다.</li>
+            </ul>
+            <p class="section-text">최신 업데이트: <time datetime="2026-02-08">2026년 2월 8일</time></p>
+        </section>
         <div class="upload-card">
             <label class="upload-label" for="image-input">사진 업로드</label>
             <input id="image-input" type="file" accept="image/*">
@@ -106,6 +156,10 @@
                     <p>Teachable Machine 기반 이미지 분류 모델로, 학습된 패턴을 참고해 강아지/고양이 동물상 확률을 표시합니다.</p>
                 </div>
                 <div class="section-card">
+                    <h3>누구에게 유용한가요?</h3>
+                    <p>동물상 테스트를 가볍게 즐기고 싶은 사용자, 사진으로 간단한 재미 요소를 확인하고 싶은 사용자에게 적합합니다.</p>
+                </div>
+                <div class="section-card">
                     <h3>정확도에 영향을 주는 요소</h3>
                     <p>조명, 각도, 해상도, 얼굴 가림(마스크/선글라스) 등에 따라 결과가 달라질 수 있습니다.</p>
                 </div>
@@ -115,6 +169,23 @@
                 </div>
             </div>
             <p class="notice">이 서비스는 사용자의 체험을 돕기 위해 결과와 한계를 투명하게 공개합니다.</p>
+        </section>
+        <section id="qa" class="content-section">
+            <h2 class="section-title">질문으로 보는 서비스</h2>
+            <div class="section-grid">
+                <div class="section-card">
+                    <h3>이 서비스는 무엇을 하나요?</h3>
+                    <p>업로드한 사진에서 보이는 얼굴 특징을 바탕으로 강아지/고양이 동물상 경향을 예측합니다.</p>
+                </div>
+                <div class="section-card">
+                    <h3>언제, 어떻게 쓰면 좋나요?</h3>
+                    <p>친구와 함께 재미로 확인하거나, 간단한 놀이 콘텐츠로 활용하기에 좋습니다. 밝고 정면에 가까운 사진을 사용하면 결과가 더 안정적입니다.</p>
+                </div>
+                <div class="section-card">
+                    <h3>왜 결과가 다를 수 있나요?</h3>
+                    <p>조명, 각도, 해상도, 얼굴 가림 여부에 따라 모델이 인식하는 특징이 달라질 수 있습니다.</p>
+                </div>
+            </div>
         </section>
         <section id="privacy" class="content-section">
             <h2 class="section-title">개인정보 및 데이터 처리</h2>
