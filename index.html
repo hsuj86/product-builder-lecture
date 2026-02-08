@@ -12,14 +12,14 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ko_KR">
     <meta property="og:site_name" content="Animal Face Test">
-    <meta property="og:title" content="Animal Face Test">
-    <meta property="og:description" content="사진 한 장으로 강아지/고양이 동물상을 예측하는 체험형 테스트입니다. 업로드한 사진은 브라우저에서만 처리되며, 사용 방법과 한계, 개인정보 안내를 투명하게 제공합니다.">
-    <meta property="og:url" content="https://hsuj86.github.io/product-builder-lecture/">
-    <meta property="og:image" content="https://hsuj86.github.io/product-builder-lecture/apple-touch-icon.png">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Animal Face Test">
-    <meta name="twitter:description" content="사진 한 장으로 강아지/고양이 동물상을 예측하는 체험형 테스트입니다. 업로드한 사진은 브라우저에서만 처리되며, 사용 방법과 한계, 개인정보 안내를 투명하게 제공합니다.">
-    <meta name="twitter:image" content="https://hsuj86.github.io/product-builder-lecture/apple-touch-icon.png">
+    <meta property="og:title" content="Animal Face Test" id="og-title">
+    <meta property="og:description" content="사진 한 장으로 강아지/고양이 동물상을 예측하는 체험형 테스트입니다. 업로드한 사진은 브라우저에서만 처리되며, 사용 방법과 한계, 개인정보 안내를 투명하게 제공합니다." id="og-description">
+    <meta property="og:url" content="https://hsuj86.github.io/product-builder-lecture/" id="og-url">
+    <meta property="og:image" content="https://hsuj86.github.io/product-builder-lecture/apple-touch-icon.png" id="og-image">
+    <meta name="twitter:card" content="summary" id="twitter-card">
+    <meta name="twitter:title" content="Animal Face Test" id="twitter-title">
+    <meta name="twitter:description" content="사진 한 장으로 강아지/고양이 동물상을 예측하는 체험형 테스트입니다. 업로드한 사진은 브라우저에서만 처리되며, 사용 방법과 한계, 개인정보 안내를 투명하게 제공합니다." id="twitter-description">
+    <meta name="twitter:image" content="https://hsuj86.github.io/product-builder-lecture/apple-touch-icon.png" id="twitter-image">
     <meta name="theme-color" content="#f9a825">
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -138,6 +138,22 @@
             <img id="preview-image" alt="업로드한 사진 미리보기">
             <div id="result" class="result" aria-live="polite"></div>
             <div id="label-container" class="label-container"></div>
+            <div id="share-section" class="share-card" aria-label="SNS 공유">
+                <p class="share-title">결과 공유하기</p>
+                <p class="share-sub">친구와 비교해보세요. 한 번 공유하면 더 많은 사람들이 참여할 수 있어요.</p>
+                <div class="share-actions">
+                    <button class="share-btn primary" type="button" data-share="native">공유하기</button>
+                    <button class="share-btn" type="button" data-share="copy">링크 복사</button>
+                    <button class="share-btn" type="button" data-share="x">X</button>
+                    <button class="share-btn" type="button" data-share="facebook">Facebook</button>
+                    <button class="share-btn" type="button" data-share="kakaostory">KakaoStory</button>
+                    <button class="share-btn" type="button" data-share="line">LINE</button>
+                </div>
+                <div class="share-link">
+                    <input id="share-url" type="text" readonly>
+                    <span id="share-message" class="share-message" aria-live="polite"></span>
+                </div>
+            </div>
         </div>
         <section id="how" class="content-section">
             <h2 class="section-title">사용 방법</h2>
